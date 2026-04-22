@@ -36,6 +36,7 @@ trading_bot/
   README.md
   requirements.txt
 
+
 Setup Instructions
 
 1. Clone repository
