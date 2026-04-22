@@ -4,136 +4,129 @@ This is a command-line trading bot that places MARKET and LIMIT orders on Binanc
 
 Features
 
-Place MARKET and LIMIT orders
-Supports BUY and SELL
-Works with Binance Futures Testnet
-Takes input from CLI using argparse
-Uses dataset-based trading logic
-Performs data preprocessing
-Uses Simple Moving Average (SMA)
-Logs API requests and responses
-Handles errors and exceptions
+1. Place MARKET and LIMIT orders
+2. Supports BUY and SELL
+3. Works with Binance Futures Testnet
+4. Takes input from CLI using argparse
+5. Uses dataset-based trading logic
+6. Performs data preprocessing
+7. Uses Simple Moving Average (SMA)
+8. Logs API requests and responses
+9. Handles errors and exceptions
 
 Strategy Logic
 
-The bot uses two datasets.
-
-Fear and Greed Index is used to understand market sentiment.
-
-Historical price data is used to calculate SMA (10-period).
-
-Decision logic:
-BUY when sentiment is low and price is above SMA
-SELL when sentiment is high and price is below SMA
-Fallback ensures a trade is always executed
+1. The bot uses two datasets
+2. Fear and Greed Index is used to understand market sentiment
+3. Historical price data is used to calculate SMA (10-period)
+4. BUY when sentiment is low and price is above SMA
+5. SELL when sentiment is high and price is below SMA
+6. Fallback ensures a trade is always executed
 
 Project Structure
 
 trading_bot/
-bot/
-client.py
-orders.py
-validators.py
-strategy.py
-cli.py
-fear_greed_index.csv
-historical_data.csv
-trading_bot.log
-requirements.txt
-README.md
+  bot/
+    __init__.py
+    client.py        # Binance client wrapper
+    orders.py        # order placement logic
+    validators.py    # input validation
+    logging_config.py
+  cli.py             # CLI entry point
+  README.md
+  requirements.txt
 
 Setup Instructions
 
 1. Clone repository
-   git clone <your-repo-link>
+   git clone
    cd trading_bot
 
 2. Install dependencies
    pip install -r requirements.txt
 
 3. Create .env file
-
-BINANCE_API_KEY=your_testnet_api_key
-BINANCE_API_SECRET=your_testnet_api_secret
+   BINANCE_API_KEY=your_testnet_api_key
+   BINANCE_API_SECRET=your_testnet_api_secret
 
 4. Setup Binance Testnet
-
-Use Binance Futures Testnet
-Generate API keys from
-https://testnet.binancefuture.com/
+   Use Binance Futures Testnet
+   Generate API keys from
+   https://testnet.binancefuture.com/
 
 Usage
 
-Manual mode
-python cli.py --symbol BTCUSDT --side BUY --type MARKET --quantity 0.001
+1. Manual mode
+   python cli.py --symbol BTCUSDT --side BUY --type MARKET --quantity 0.001
 
-Limit order
-python cli.py --symbol BTCUSDT --side SELL --type LIMIT --quantity 0.001 --price 80000
+2. Limit order
+   python cli.py --symbol BTCUSDT --side SELL --type LIMIT --quantity 0.001 --price 80000
 
-Auto mode (dataset-based)
-python cli.py --symbol BTCUSDT --type MARKET --quantity 0.001 --auto
+3. Auto mode (dataset-based)
+   python cli.py --symbol BTCUSDT --type MARKET --quantity 0.001 --auto
 
 Example Output
 
-Fear and Greed Index: 45
-Current Price: 74800
-SMA(10): 74200
-
-Signal from dataset: BUY
+1. Fear and Greed Index: 45
+2. Current Price: 74800
+3. SMA(10): 74200
+4. Signal from dataset: BUY
 
 ORDER SUMMARY
-Symbol: BTCUSDT
-Side: BUY
-Type: MARKET
-Quantity: 0.001
+
+1. Symbol: BTCUSDT
+2. Side: BUY
+3. Type: MARKET
+4. Quantity: 0.001
 
 RESPONSE
-Order ID: 12345678
-Status: NEW
-Executed Qty: 0.001
-Avg Price: 74850
+
+1. Order ID: 12345678
+2. Status: NEW
+3. Executed Qty: 0.001
+4. Avg Price: 74850
 
 Logging
 
-All logs are saved in trading_bot.log
+1. All logs are saved in trading_bot.log
 
 Assumptions
 
-Datasets contain required columns
-value for Fear and Greed Index
-close for historical data
-Latest row is the most recent data
-Testnet is used
+1. Datasets contain required columns
+2. value for Fear and Greed Index
+3. close for historical data
+4. Latest row is the most recent data
+5. Testnet is used
 
 Requirements
 
-python-binance
-python-dotenv
-pandas
+1. python-binance
+2. python-dotenv
+3. pandas
 
 Deliverables Covered
 
-Market and Limit orders
-Buy and Sell support
-CLI input handling
-Structured code
-Logging
-Exception handling
-Dataset integration
+1. Market and Limit orders
+2. Buy and Sell support
+3. CLI input handling
+4. Structured code
+5. Logging
+6. Exception handling
+7. Dataset integration
 
 Bonus Features
 
-Data-driven trading
-Two dataset integration
-SMA calculation
-Auto trading mode
+1. Data-driven trading
+2. Two dataset integration
+3. SMA calculation
+4. Auto trading mode
 
 Future Improvements
 
-Add RSI or EMA
-Add Stop-Limit orders
-Improve CLI
-Add UI
+1. Add RSI or EMA
+2. Add Stop-Limit orders
+3. Improve CLI
+4. Add UI
 
 Author
 
